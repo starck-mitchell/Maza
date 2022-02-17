@@ -99,6 +99,17 @@ ostream& operator<<(ostream& stream, Maze m)
 istream& operator>>(istream& stream, Maze& m)
 { char ch;
 
-  
+  for(int row = 1; row <= m._max_row; row++)
+    { 
+      for(int col = 1; col <= m._max_col; col++)
+	{ 
+	  stream.get(ch);
+	  if (ch == '.' || ch == ' ')
+	    m._map[row][col] = '.';
+	  else
+	    m._map[row][col] = '*';
+	}
+      stream.ignore(50,'\n');
+    }
   return stream;
 }
